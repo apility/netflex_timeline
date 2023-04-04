@@ -6,9 +6,13 @@ import 'config.dart';
 
 part 'duration.dart';
 
+/// [TimelineItemBuilder] is a builder function that builds an item on a track.
+/// The location is a bounded box that is sized according to the length of item
+/// as configured in the [VerticalTimelineConfiguration].
 typedef TimelineItemBuilder<C, T> = Widget Function(BuildContext context,
     TimelineItem<T> item, C? config, BoxConstraints constraints);
 
+/// Used to draw hour markers
 typedef TimelineTimeMarkerBuilder = Widget Function(BuildContext context, DateTime time);
 
 class VerticalTimeline<C, T> extends StatefulWidget {
@@ -56,6 +60,9 @@ class _VerticalTimelineState<C, T> extends State<VerticalTimeline<C, T>> {
       transformationController: controller,
       constrained: false,
       panAxis: PanAxis.free,
+      scaleEnabled: widget.config.scaleEnabled,
+      minScale: widget.config.minScale,
+      maxScale: widget.config.maxScale,
       child: Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,

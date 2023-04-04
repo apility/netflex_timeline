@@ -5,9 +5,12 @@ class VerticalTimelineConfiguration {
   final double trackWidth;
   final double pixelsPerHour;
   final double pixelsPerSecond;
+  final double minScale;
+  final double maxScale;
   final EdgeInsets padding;
   final bool floatingHeader;
   final bool floatingTime;
+  final bool scaleEnabled;
   final TimelineDurationResolver durationResolver;
 
   const VerticalTimelineConfiguration({
@@ -17,6 +20,10 @@ class VerticalTimelineConfiguration {
     this.floatingTime = true,
     this.padding = const EdgeInsets.symmetric(horizontal: 20),
     this.durationResolver = const DynamicTimelineDuration(),
+
+    this.minScale = 0.8,
+    this.maxScale = 2.5,
+    this.scaleEnabled = true,
   }) : pixelsPerSecond = pixelsPerHour / 3600;
 
   double canvasWidth(int trackCount) {
