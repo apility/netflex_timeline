@@ -6,10 +6,10 @@ import 'config.dart';
 
 part 'duration.dart';
 
-typedef Widget TimelineItemBuilder<C, T>(BuildContext context,
+typedef TimelineItemBuilder<C, T> = Widget Function(BuildContext context,
     TimelineItem<T> item, C? config, BoxConstraints constraints);
 
-typedef Widget TimelineTimeMarkerBuilder(BuildContext context, DateTime time);
+typedef TimelineTimeMarkerBuilder = Widget Function(BuildContext context, DateTime time);
 
 class VerticalTimeline<C, T> extends StatefulWidget {
   final VerticalTimelineConfiguration config;
@@ -128,7 +128,7 @@ class _VerticalTimelineState<C, T> extends State<VerticalTimeline<C, T>> {
             ),
           ));
 
-  Positioned _createLeftPadding(TimelineDuration _duration) {
+  Positioned _createLeftPadding(TimelineDuration duration) {
     return Positioned(
         top: 0,
         left: 0,
@@ -142,14 +142,14 @@ class _VerticalTimelineState<C, T> extends State<VerticalTimeline<C, T>> {
               PaddingTrack(),
               -1,
               widget.config,
-              _duration,
+              duration,
               constraints,
             ),
           ),
         ));
   }
 
-  Positioned _createRightPadding(TimelineDuration _duration) {
+  Positioned _createRightPadding(TimelineDuration duration) {
     return Positioned(
         top: 0,
         right: 0,
@@ -163,7 +163,7 @@ class _VerticalTimelineState<C, T> extends State<VerticalTimeline<C, T>> {
               PaddingTrack(),
               widget.tracks.length,
               widget.config,
-              _duration,
+              duration,
               constraints,
             ),
           ),

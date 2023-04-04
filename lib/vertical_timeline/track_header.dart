@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'config.dart';
 
-Widget _buildDefaultHeader<C, T>(BuildContext context,
-    TimelineTrack<C, T> item,
-    BoxConstraints constraints,) =>
+Widget _buildDefaultHeader<C, T>(
+  BuildContext context,
+  TimelineTrack<C, T> item,
+  BoxConstraints constraints,
+) =>
     item.header;
 
 abstract class TrackHeadersBuilder<C, T> {
   const TrackHeadersBuilder();
 
-  Widget build(BuildContext context,
-      List<TimelineTrack<C, T>> items,
-      VerticalTimelineConfiguration configuration,);
+  Widget build(
+    BuildContext context,
+    List<TimelineTrack<C, T>> tracks,
+    VerticalTimelineConfiguration config,
+  );
 }
 
 class DefaultMaterialHeader extends TrackHeadersBuilder<dynamic, dynamic> {
@@ -21,10 +25,10 @@ class DefaultMaterialHeader extends TrackHeadersBuilder<dynamic, dynamic> {
   final TextStyle textStyle;
   final TextAlign? textAlign;
   final Widget Function<C, T>(
-      BuildContext context,
-      TimelineTrack<C, T> item,
-      BoxConstraints constraints,
-      ) builder;
+    BuildContext context,
+    TimelineTrack<C, T> item,
+    BoxConstraints constraints,
+  ) builder;
 
   const DefaultMaterialHeader({
     this.builder = _buildDefaultHeader,
@@ -46,8 +50,7 @@ class DefaultMaterialHeader extends TrackHeadersBuilder<dynamic, dynamic> {
           SizedBox(
             width: config.padding.left,
           ),
-          ...tracks.map((e) =>
-              Container(
+          ...tracks.map((e) => Container(
                 padding: padding,
                 width: config.trackWidth,
                 child: DefaultTextStyle(
