@@ -1,7 +1,7 @@
 name: netflex_timeline
 description: A timetable/multitimeline library
 version: 1.0.0
-repository: https://github.com/tommysolsen/netflex_timeline
+repository: https://github.com/apility/netflex_timeline
 
 environment:
   sdk: '>=2.19.4 <3.0.0'
